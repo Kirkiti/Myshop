@@ -1,0 +1,47 @@
+    {% extends 'partials/base.html' %}
+    {% load static %}
+    {% block content %}
+
+<form method="get" action="">
+    <!-- Category Filter -->
+    <label for="category">Category:</label>
+    <select name="category" id="category">
+        <option value="" selected>All Categories</option>
+        {% for p in products %}
+            <option value="{{ category.id }}">{{ category.title }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <!-- Vendor Filter -->
+   <label for="vendor">Vendor:</label>
+    <select name="vendor" id="vendor">
+       <option value="" selected>All Vendors</option>
+       {% for vendor in vendors %}
+           <option value="{{ vendor.id }}">{{ vendor.title }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <!-- Tags Filter -->
+    <label for="tags">Tags:</label>
+   <select name="tags" id="tags">
+        <option value="" selected>All Tags</option>
+        {% for tag in tags %}
+            <option value="{{ tag.id }}">{{ tag.name }}</option>
+        {% endfor %}
+    </select>
+    <br>
+   <button type="submit">Apply Filters</button>
+</form>
+
+<!-- Display Filtered Products -->
+{% if products %}
+    <h2>Filtered Products</h2>
+   <ul>
+       {% for p in products %}
+            <li>{{ p.title }} - {{ p.category.title }} - {{ p.vendor.title }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+      {% endblock content %}
+

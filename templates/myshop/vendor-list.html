@@ -1,0 +1,25 @@
+    {% extends 'partials/base.html' %}
+    {% load static %}
+    {% block content %}
+
+<div style="background-color:powderblue">
+   <h1 style="color: black; text-align: center">We have <strong class="text-brand">{{ vendors.count }} vendors now</strong></h1>
+    <h1>Vendor List</h1>
+            {% for v in vendors %}
+    <ul style="list-style-type: none">
+        <li>
+            <img src="{{ v.image.url}}" alt="Vendor 1" class="vendor-image">
+            <div class="vendor-name">{{ v.vendor.all.count }} Products</div>
+        <div class="vendor-info">{{ v.title }}</div>
+            <div class="vendor-info">{{ v.address}}</div>
+            <div class="vendor-info">{{ v.contact}}</div>
+        </li>
+
+
+        <!-- Add more vendor entries as needed -->
+
+    </ul>
+        {% endfor %}
+
+</div>
+{% endblock content %}
